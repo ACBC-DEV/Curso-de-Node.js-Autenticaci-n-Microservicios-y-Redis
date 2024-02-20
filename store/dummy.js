@@ -7,20 +7,22 @@ const db = {
   ],
 };
 
-function list(tabla) {
+async function list(tabla) {
   return db[tabla];
 }
-function get(tabla, id) {
-  const col = list(tabla);
-  return col.filter((item) => item.id === id)[0] || null;
+async function get(tabla, id) {
+  const idNum = Number(id);
+  const col = await list(tabla);
+  return col.find((item) => item.id === idNum) || null;
 }
 
-function upsert(tabla, data) {
-  db[collection].push(data);
+async function upsert(tabla, data) {
+  await db[tabla].push(data);
+  return data;
 }
 
-function remove(tabla, id) {
-  retu;
+async function remove(tabla, id) {
+  return true;
 }
 
 module.exports = {
