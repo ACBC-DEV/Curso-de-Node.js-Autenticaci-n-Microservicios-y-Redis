@@ -2,18 +2,10 @@ const TABLA = "user";
 module.exports = (injectedStore) => {
   let store = injectedStore;
   if (!store) store = require("../../../store/dummy");
-  function list() {
-    return store.list(TABLA);
-  }
-  function get(id) {
-    return store.get(TABLA, id);
-  }
-  function upsert(data) {
-    return store.upsert(TABLA, data);
-  }
+
   return {
-    list,
-    get,
-    upsert,
+    list: () => store.list(TABLA),
+    get: (id) => store.get(TABLA, id),
+    upsert: (data) => store.upsert(TABLA, data),
   };
 };

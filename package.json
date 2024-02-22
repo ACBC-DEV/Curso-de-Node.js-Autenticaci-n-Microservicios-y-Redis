@@ -10,6 +10,10 @@
 	"author": "ACBC",
 	"license": "ISC",
 	"dependencies": {
-		"express": "^4.18.2"
+		"body-parser": "^1.20.2",
+		"express": "^4.18.2",
+		"express-jsdoc-swagger": "^1.8.0",
+		"nanoid": "^5.0.6",
+		"swagger-ui-express": "^5.0.0"
 	}
 }

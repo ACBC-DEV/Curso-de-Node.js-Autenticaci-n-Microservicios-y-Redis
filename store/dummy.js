@@ -22,7 +22,13 @@ async function upsert(tabla, data) {
 }
 
 async function remove(tabla, id) {
-  return true;
+  const table = await list(tabla);
+  const index = table.indexOf(id);
+  const remove = table.splice(index + 1, 1);
+  return {
+    table,
+    remove,
+  };
 }
 
 module.exports = {
