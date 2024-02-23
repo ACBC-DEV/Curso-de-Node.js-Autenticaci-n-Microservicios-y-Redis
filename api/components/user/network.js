@@ -64,5 +64,14 @@ router.post("/", async (req, res) => {
     response.error(req, res, err.message, 500);
   }
 });
+router.delete("/:id", async (req, res) => {
+  try {
+    const list = await Controller.remove(req.params.id);
+    console.log(req.body);
+    response.success(req, res, list, 201);
+  } catch (err) {
+    response.error(req, res, err.message, 500);
+  }
+});
 
 module.exports = router;

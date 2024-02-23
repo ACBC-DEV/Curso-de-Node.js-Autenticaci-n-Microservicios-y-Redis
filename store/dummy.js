@@ -17,17 +17,19 @@ async function get(tabla, id) {
 }
 
 async function upsert(tabla, data) {
+  if (!db[tabla]) db[tabla] = [];
+
   await db[tabla].push(data);
+  console.log(db);
   return data;
 }
 
 async function remove(tabla, id) {
   const table = await list(tabla);
   const index = table.indexOf(id);
-  const remove = table.splice(index + 1, 1);
+  const removed = table.splice(index + 1, 1);
   return {
-    table,
-    remove,
+    removed,
   };
 }
 
