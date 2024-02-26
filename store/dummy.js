@@ -8,7 +8,7 @@ const db = {
 };
 
 async function list(tabla) {
-  return db[tabla];
+  return db[tabla] || [];
 }
 async function get(tabla, id) {
   const idNum = Number(id);
@@ -23,11 +23,16 @@ async function upsert(tabla, data) {
   console.log(db);
   return data;
 }
-
+async function query(tabla, q) {
+  const col = await list(tabla);
+  const keys = Object.keys(q);
+  const key = keys[0];
+  return col.filter((item) => item[key] === q[key])[0] || null;
+}
 async function remove(tabla, id) {
-  const table = await list(tabla);
-  const index = table.indexOf(id);
-  const removed = table.splice(index + 1, 1);
+  const col = await list(tabla);
+  const index = col.indexOf(id);
+  const removed = col.splice(index + 1, 1);
   return {
     removed,
   };
@@ -38,4 +43,5 @@ module.exports = {
   get,
   upsert,
   remove,
+  query,
 };
