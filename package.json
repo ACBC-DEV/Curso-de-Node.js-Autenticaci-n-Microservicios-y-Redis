@@ -1,20 +1,21 @@
 {
-	"name": "curso-de-node.js-autenticaci-n-microservicios-y-redis",
-	"version": "1.0.0",
-	"description": "",
-	"main": "/api/index.js",
-	"scripts": {
-		"dev": "nodemon api/index.js",
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"author": "ACBC",
-	"license": "ISC",
-	"dependencies": {
-		"body-parser": "^1.20.2",
-		"express": "^4.18.2",
-		"express-jsdoc-swagger": "^1.8.0",
-		"jsonwebtoken": "^9.0.2",
-		"nanoid": "^3.3.7",
-		"swagger-ui-express": "^5.0.0"
-	}
+  "name": "curso-de-node.js-autenticaci-n-microservicios-y-redis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/api/index.js",
+  "scripts": {
+    "dev": "nodemon api/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ACBC",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "express-jsdoc-swagger": "^1.8.0",
+    "jsonwebtoken": "^9.0.2",
+    "nanoid": "^3.3.5",
+    "swagger-ui-express": "^5.0.0"
+  }
 }

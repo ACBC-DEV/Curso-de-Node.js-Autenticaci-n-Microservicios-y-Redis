@@ -45,11 +45,9 @@
     }
   ],
   "paths": {
-    "/user": {
+    "api/user": {
       "get": {
-        "tags": [
-          "user"
-        ],
+        "tags": ["user"],
         "summary": "get a users",
         "operationId": "listUser",
         "responses": {
@@ -66,9 +64,7 @@
         }
       },
       "post": {
-        "tags": [
-          "user"
-        ],
+        "tags": ["user"],
         "summary": "Create user",
         "description": "This can only be done by the logged in user.",
         "operationId": "createUser",

@@ -1,4 +1,5 @@
 const auth = require("../../../auth");
+const bcrypt = require("bcrypt")
 const TABLA = "auth";
 module.exports = (injectedStore) => {
   let store = injectedStore;
@@ -9,16 +10,22 @@ module.exports = (injectedStore) => {
       const data = await store.query(TABLA, {
         username: username,
       });
-      if (data.password === password) return auth.sign(data);
+      const isSame=bcrypt.compareSync(password, data.password)
+      if (isSame)
+        return {
+          token: auth.sign(data),
+          username,
+        };
+
       throw new Error("Invalid access ");
     },
-    upsert: (data) => {
+    upsert:  (data) => {
       const authData = {
         id: data.id,
       };
       if (data.username) authData.username = data.username;
 
-      if (data.password) authData.password = data.password;
+      if (data.password) authData.password  =  bcrypt.hashSync(data.password,5);
       return store.upsert(TABLA, authData);
     },
   };
