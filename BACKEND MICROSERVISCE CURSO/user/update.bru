@@ -1,0 +1,24 @@
+meta {
+  name: update
+  type: http
+  seq: 3
+}
+
+put {
+  url: http://localhost:3000/api/user
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InpadEhxOXhnSWlLR2dyT1BxeEp2TCIsInVzZXJuYW1lIjoiaGV0Y3RvciIsInBhc3N3b3JkIjoiJDJiJDA1JEJvZXp5MjV0ckdxeDVUblkuVzFvek9zODhhTVhtYVFiLm10SE5GZ0dXVDlqUUhVejdVekZHIiwiaWF0IjoxNzEyNTMxNzE2fQ.W8CKw_RrCBgWwU7yo_zwOzE2fbtQpQwK22xJ_PpUsYU
+}
+
+body:json {
+  {
+    "id":"zZtHq7xgIiKGgrOPqxJvL",
+    "name":"pacer",
+    "username":"hetctor",
+    "password":2452
+  }
+}

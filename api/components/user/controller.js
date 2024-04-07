@@ -26,6 +26,7 @@ module.exports = (injectedStore) => {
 
       return store.upsert(TABLA, user);
     },
+    update: (data) => store.update(TABLA, data),
     remove: (id) => store.remove(TABLA, id),
   };
 };

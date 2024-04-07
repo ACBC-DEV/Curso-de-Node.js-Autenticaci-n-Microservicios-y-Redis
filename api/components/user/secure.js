@@ -5,13 +5,7 @@ module.exports = function checkAuht(action) {
       case "update":
         const owner = req.body.id;
         auth.check.own(req, owner);
-        if (req.user.id === owner) {
-          next();
-        } else {
-          res
-            .status(403)
-            .send({ error: "No tienes permisos para realizar esta acción" });
-        }
+        next();
         break;
       default:
         next();

@@ -29,6 +29,15 @@ async function query(tabla, q) {
   const key = keys[0];
   return col.filter((item) => item[key] === q[key])[0] || null;
 }
+async function update(tabla, data) {
+  const col = await list(tabla);
+  const index = col.findIndex((item) => item.id === data.id);
+  col[index] = {
+    ...col[index],
+    ...data,
+  };
+  return col[index];
+}
 async function remove(tabla, id) {
   const col = await list(tabla);
   const index = col.indexOf(id);
@@ -44,4 +53,5 @@ module.exports = {
   upsert,
   remove,
   query,
+  update,
 };
