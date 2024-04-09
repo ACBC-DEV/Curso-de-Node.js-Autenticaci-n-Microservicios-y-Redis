@@ -1,6 +1,5 @@
 const express = require("express");
 
-const secret = require("./secure");
 const response = require("../../../network/response");
 const Controller = require("./index");
 const secure = require("./secure");
