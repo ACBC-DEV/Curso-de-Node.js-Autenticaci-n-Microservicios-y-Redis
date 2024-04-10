@@ -9,13 +9,11 @@ router.use(express.json());
 
 router.post("/login", loginPost);
 
-function loginPost(req, res) {
+function loginPost(req, res, next) {
   Controller.login(req.body.username, req.body.password)
     .then((token) => {
       response.success(req, res, token, 200);
     })
-    .catch((err) => {
-      response.error(req, res, "informacion in Validad", 400);
-    });
+    .catch(next);
 }
 module.exports = router;
