@@ -10,9 +10,9 @@ module.exports = (injectedStore) => {
       const data = await store.query(TABLA, {
         username: username,
       });
-      console.log(data);
+
       const isSame = bcrypt.compareSync(password, data.password);
-      console.log(isSame);
+
       if (isSame)
         return {
           token: auth.sign(data.id),
