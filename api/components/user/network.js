@@ -9,6 +9,8 @@ router.use(express.json());
 
 router.get("/", getUser);
 router.get("/:id", getByID);
+router.get("/followers/:id", following);
+router.post("/follow/:id", secure("follow"), follow);
 router.post("/", postUser);
 router.delete("/:id", deleteUser);
 router.put("/", secure("update"), putUser);
@@ -51,6 +53,24 @@ function putUser(req, res, next) {
   Controller.update(req.body)
     .then((data) => {
       response.success(req, res, data, 200);
+    })
+    .catch(next);
+}
+function follow(req, res, next) {
+  console.log("user ID", req.user);
+  console.log("reques id", req.params.id);
+  Controller.follow(req.user, req.params.id)
+    .then((data) => {
+      response.success(req, res, data, 201);
+    })
+    .catch(next);
+}
+
+function following(req, res, next) {
+  console.log("following");
+  Controller.following(req.params.id)
+    .then((data) => {
+      response.success(req, res, data, 201);
     })
     .catch(next);
 }
