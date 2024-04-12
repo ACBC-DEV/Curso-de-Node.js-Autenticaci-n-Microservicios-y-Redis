@@ -13,11 +13,15 @@ function verify(token) {
 const check = {
   own: function (req, owner) {
     const decoded = decodeHeader(req);
-    console.log("DECODE", decoded.id);
-    console.log("OWNER", owner);
+
     if (decoded !== owner) {
       throw error("No puedes hacer esto", 401);
     }
+  },
+  logged: function (req) {
+    const decode = decodeHeader(req);
+
+    return decode;
   },
 };
 function decodeHeader(req) {
