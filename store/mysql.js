@@ -74,12 +74,22 @@ function update(tabla, data) {
     );
   });
 }
-function query(tabla, query) {
+function query(tabla, query, join) {
+  let joinQuery = "";
+  if (join) {
+    const key = Object.keys(join)[0];
+    const val = join[key];
+    joinQuery = `JOIN ${key} ON ${tabla}.${val} = ${key}.id`;
+  }
   return new Promise((resolve, reject) => {
-    connection.query(`SELECT * FROM ${tabla} WHERE ?`, query, (err, res) => {
-      if (err) return reject(err);
-      resolve(res[0] || null);
-    });
+    connection.query(
+      `SELECT * FROM ${tabla} ${joinQuery} WHERE ?`,
+      query,
+      (err, res) => {
+        if (err) return reject(err);
+        resolve(res[0] || null);
+      }
+    );
   });
 }
 
