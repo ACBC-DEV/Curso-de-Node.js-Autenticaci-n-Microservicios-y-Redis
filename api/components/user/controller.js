@@ -28,5 +28,15 @@ module.exports = (injectedStore) => {
     },
     update: (data) => store.update(TABLA, data),
     remove: (id) => store.remove(TABLA, id),
+    follow: (from, to) =>
+      store.upsert(`${TABLA}_follow`, {
+        user_from: from,
+        user_to: to,
+      }),
+    following: async (id) => {
+      join = {};
+      join[TABLA] = "user_to";
+      return await store.query(`${TABLA}_follow`, { user_to: id }, join);
+    },
   };
 };
