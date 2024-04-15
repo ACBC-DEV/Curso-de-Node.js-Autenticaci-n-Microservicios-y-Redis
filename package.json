@@ -4,7 +4,9 @@
   "description": "",
   "main": "/api/index.js",
   "scripts": {
+    "mysql": "nodemon mysql/index.js",
     "dev": "nodemon api/index.js",
+    "postDev": "nodemon post/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ACBC",
@@ -17,6 +19,7 @@
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
     "nanoid": "^3.3.5",
+    "request": "^2.88.2",
     "swagger-ui-express": "^5.0.0"
   }
 }
